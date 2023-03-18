@@ -1,11 +1,8 @@
 // external
 import * as rp from 'request-promise';
-import axios from 'axios';
-import got from 'got';
 
 // types
 import { AccessResponse, IntegrationDatapoints, SeedInput } from './types';
-import { Console } from 'console';
 
 // The API key
 export const MAILGUN_API_KEY = 'FILL IN FROM ACCOUNT';
@@ -92,7 +89,7 @@ export const mailgunDataPoints: IntegrationDatapoints = {
 };
 
 
-//Implimented the following async Functions
+//Implemented the following async Functions
 //1) getAllMailingListAddress - Route::  GET :: https://api.mailgun.net:443/v3/lists/pages?limit=100
 //2) checkIfUserInMailingList - Route::  GET :: https://api.mailgun.net:443/v3/lists/{address}/members/{identifier}
 //3) deleteUserFromMailingList- Route::  DELETE :: https://api.mailgun.net:443/v3/lists/{address}/members/{identifier}
