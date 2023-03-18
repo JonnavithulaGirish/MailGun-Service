@@ -40,14 +40,14 @@ export const mailgunDataPoints: IntegrationDatapoints = {
 
     //STEP 3:: Return the Mailing list Addresses that user has subscribed for
     return await Promise.all(promises).then((response)=>{
-      var identifiersMailingList = new Array<string>();
+      var subscribedMailingList = new Array<string>();
      
       response.forEach((res)=>{
         if(res){
-          identifiersMailingList.push(res);
+          subscribedMailingList.push(res);
         }
       });
-      var accessResponse: AccessResponse= {data: identifiersMailingList, contextDict: {mailingLists: identifiersMailingList}};
+      var accessResponse: AccessResponse= {data: subscribedMailingList, contextDict: {mailingLists: subscribedMailingList}};
       return accessResponse;
     });
 
