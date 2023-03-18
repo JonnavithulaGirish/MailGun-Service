@@ -41,8 +41,8 @@ export const mailgunDataPoints: IntegrationDatapoints = {
     //STEP 3:: Return the Mailing list Addresses that user has subscribed for
     return await Promise.all(promises).then((response)=>{
       var subscribedMailingList = new Array<string>();
-     
       response.forEach((res)=>{
+        //checking if the string is not null or empty
         if(res){
           subscribedMailingList.push(res);
         }
