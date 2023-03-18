@@ -33,6 +33,8 @@ export const mailgunDataPoints: IntegrationDatapoints = {
     var mailingListData = await getAllMailingListAddress(MAILGUN_API_BASE_URL+`pages?limit=100`, []);
 
     //STEP 2:: Check if the identifier is a member of any Mailing List
+    //However we could have also used GET:: /list/{address}/members and check for a identifier
+    //but this approach would increase both space and time complexity
     var promises = new Array<Promise<string>>();
     mailingListData.forEach((address) => {
       promises.push(checkIfUserInMailingList(MAILGUN_API_BASE_URL, address ,identifier));
@@ -151,7 +153,7 @@ async function getAllMailingListAddress(url, data): Promise<[string]> {
 /**
   * Checks if a User is Present on a Mailing List
   * If Yes, it returns the mailing list address(string)
-  * In other scenarios, it returns null which implies user is not present on the given mailing list
+  * In other scenarios, it returns null which implies user is not present in the given mailing list
   */
 async function checkIfUserInMailingList(url: string ,address : string, identifier :string): Promise<string> {
   url= `${url}${address}/members/${identifier}`;
